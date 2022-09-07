@@ -12,10 +12,14 @@ class Cliente {
 private:
     string id;
     string nombre;
+    bool ingresaNino; //20%
+    bool embarazada; //25%
+    bool adultoMayor; //35%
+    int categoria;  //categoria 1 20%, 2 10%, 3 0%
 public:
     Cliente();
 
-    Cliente(const string &id, const string &nombre);
+    Cliente(const string &id, const string &nombre, bool ingresaNino, bool embarazada, bool adultoMayor, int categoria);
 
     virtual ~Cliente();
 
@@ -27,9 +31,21 @@ public:
 
     void setNombre(const string &nombre);
 
-    const string &getNumTarjeta() const;
+    bool isIngresaNino() const;
 
-    void setNumTarjeta(const string &numTarjeta);
+    void setIngresaNino(bool ingresaNino);
+
+    bool isEmbarazada() const;
+
+    void setEmbarazada(bool embarazada);
+
+    bool isAdultoMayor() const;
+
+    void setAdultoMayor(bool adultoMayor);
+
+    int getCategoria() const;
+
+    void setCategoria(int categoria);
 
     friend ostream &operator<<(ostream &os, const Cliente &cliente);
 

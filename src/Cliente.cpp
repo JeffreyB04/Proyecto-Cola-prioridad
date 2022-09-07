@@ -3,9 +3,12 @@
 //
 
 #include "Cliente.h"
+
 Cliente::Cliente() {}
 
-Cliente::Cliente(const string &id, const string &nombre) : id(id), nombre(nombre) {}
+Cliente::Cliente(const string &id, const string &nombre, bool ingresaNino, bool embarazada, bool adultoMayor,
+                 int categoria) : id(id), nombre(nombre), ingresaNino(ingresaNino), embarazada(embarazada),
+                                  adultoMayor(adultoMayor), categoria(categoria) {}
 
 Cliente::~Cliente() {
 
@@ -27,19 +30,53 @@ void Cliente::setNombre(const string &nombre) {
     Cliente::nombre = nombre;
 }
 
+bool Cliente::isIngresaNino() const {
+    return ingresaNino;
+}
+
+void Cliente::setIngresaNino(bool ingresaNino) {
+    Cliente::ingresaNino = ingresaNino;
+}
+
+bool Cliente::isEmbarazada() const {
+    return embarazada;
+}
+
+void Cliente::setEmbarazada(bool embarazada) {
+    Cliente::embarazada = embarazada;
+}
+
+bool Cliente::isAdultoMayor() const {
+    return adultoMayor;
+}
+
+void Cliente::setAdultoMayor(bool adultoMayor) {
+    Cliente::adultoMayor = adultoMayor;
+}
+
+int Cliente::getCategoria() const {
+    return categoria;
+}
+
+void Cliente::setCategoria(int categoria) {
+    Cliente::categoria = categoria;
+}
 
 ostream &operator<<(ostream &os, const Cliente &cliente) {
-    os << "id: " << cliente.id << " nombre: " << cliente.nombre;
-    return os;
-    /*
-      << " Online: ";
-    if (cliente.online)
+    os << "id: " << cliente.id << " nombre: " << cliente.nombre << " ingresaNino: " << cliente.ingresaNino
+       << " embarazada: ";
+    if (cliente.embarazada)
         os << "Si";
     else
         os << "No";
+    os << " adultoMayor: ";
+    if (cliente.adultoMayor)
+        os << "Si";
+    else
+        os << "No";
+    os << " categoria: "
+       << cliente.categoria;
     return os;
-}
-     */
 }
 
 string Cliente::toString() {
