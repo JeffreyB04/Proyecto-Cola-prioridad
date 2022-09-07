@@ -5,26 +5,26 @@
 #ifndef BST_BST_H
 #define BST_BST_H
 #include "Nodo.cpp"
-
+template<class T>
 class BST {
 private:
-    Nodo* root;
+    Nodo<T>* root;
 
-    Nodo* makeEmpty(Nodo* t);
-    Nodo* insert(int x, Nodo* t);
-    Nodo* findMin(Nodo* t);
-    Nodo* findMax(Nodo* t);
-    Nodo* remove(int x, Nodo* t);
-    void inOrder(Nodo* t);
-    Nodo* find(Nodo* t,int x);
+    Nodo<T>* makeEmpty(Nodo<T>* t);
+    Nodo<T>* insert(T *valor, Nodo<T>* t);
+    Nodo<T>* findMin(Nodo<T>* t);
+    Nodo<T>* findMax(Nodo<T>* t);
+    Nodo<T>* remove(T *valor, Nodo<T>* t); //en (T )
+    void inOrder(Nodo<T>* t);
+    Nodo<T>* find(Nodo<T>* t,T *valor);
 
 public:
     BST();
     virtual ~BST();
-    void insert(int x);
-    void remove(int x);
+    void insert(T *valor);
+    void remove(T *valor); //tenia (int x)
     void display();
-    void search(int x);
+    void search(T *valor);
 };
 
 

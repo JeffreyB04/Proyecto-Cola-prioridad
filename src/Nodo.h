@@ -7,20 +7,21 @@
 #include<iostream>
 using namespace std;
 
+template<class T>
 class Nodo {
 private:
-    int elemento;
+    T *dato;
     Nodo *parent;
     Nodo *left;
     Nodo *right;
 public:
-    Nodo(int elemento=0, Nodo *parent = nullptr, Nodo *left = nullptr, Nodo *right = nullptr);
+    Nodo(T *dato = nullptr, Nodo *parent = nullptr, Nodo *left = nullptr, Nodo *right = nullptr);
 
     virtual ~Nodo();
 
-    int getElemento() const;
+    T *getDato() const;
 
-    void setElemento(int elemento);
+    void setDato(T *dato);
 
     Nodo *getParent() const;
 
@@ -34,6 +35,4 @@ public:
 
     void setRight(Nodo *right);
 };
-
-
 #endif //ARBOLBINARIOVINCULADO_NODO_H

@@ -3,16 +3,16 @@
 //
 
 #include "BST.h"
-
-BST::BST() {
+template<class T>
+BST<T>::BST() {
     root = nullptr;
 }
-
-BST::~BST() {
+template<class T>
+BST<T>::~BST() {
     root = makeEmpty(root);
 }
-
-Nodo *BST::makeEmpty(Nodo *t) {
+template<class T>
+Nodo<T> *BST<T>::makeEmpty(Nodo<T> *t) {//duda en Nodo<T> *BST<T>
     if (t == nullptr)
         return nullptr;
     {
@@ -22,18 +22,18 @@ Nodo *BST::makeEmpty(Nodo *t) {
     }
     return nullptr;
 }
-
-Nodo *BST::insert(int x, Nodo *t) {
+template<class T>
+Nodo<T> *BST<T>::insert(T *valor, Nodo<T> *t) {
     if (t == nullptr) {
-        t = new Nodo(x);
-    } else if (x < t->getElemento())
-        t->setLeft(insert(x, t->getLeft()));
-    else if (x < t->getElemento())
-        t->setRight(insert(x, t->getRight()));
+        t = new Nodo<T>(valor);  //duda con parentesis no se si lleva *
+    } else if (valor < t->getElemento())
+        t->setLeft(insert(valor, t->getLeft()));
+    else if (valor < t->getElemento())
+        t->setRight(insert(valor, t->getRight()));
     return t;
 }
-
-Nodo *BST::findMin(Nodo *t) {
+template<class T>
+Nodo<T> *BST<T>::findMin(Nodo<T> *t) {
     if (t == nullptr)
         return nullptr;
     else if (t->getLeft() == nullptr)
@@ -41,8 +41,8 @@ Nodo *BST::findMin(Nodo *t) {
     else
         return findMin(t->getLeft());
 }
-
-Nodo *BST::findMax(Nodo *t) {
+template<class T>
+Nodo<T> *BST<T>::findMax(Nodo<T> *t) {
     if (t == nullptr)
         return nullptr;
     else if (t->getRight() == nullptr)
@@ -50,15 +50,15 @@ Nodo *BST::findMax(Nodo *t) {
     else
         return findMax(t->getRight());
 }
-
-Nodo *BST::remove(int x, Nodo *t) {
-    Nodo *temp;
+template<class T>
+Nodo<T> *BST<T>::remove(T *valor, Nodo<T> *t) {
+    Nodo<T> *temp;
     if (t == nullptr) {
         return nullptr;
-    } else if (x < t->getElemento()) {
-        t->setLeft(remove(x, t->getLeft()));
-    } else if (x > t->getElemento()) {
-        t->setRight(remove(x, t->getRight()));
+    } else if (valor < t->getElemento()) {
+        t->setLeft(remove(valor, t->getLeft()));
+    } else if (valor > t->getElemento()) {
+        t->setRight(remove(valor, t->getRight()));
     } else if (t->getLeft() && t->getRight()) {
         temp = findMin(t->getRight());
         t->setElemento(temp->getElemento());
@@ -73,37 +73,37 @@ Nodo *BST::remove(int x, Nodo *t) {
     }
     return t;
 }
-
-void BST::inOrder(Nodo *t) {
+template<class T>
+void BST<T>::inOrder(Nodo<T> *t) {
     if (t == nullptr)
         return;
     inOrder(t->getLeft());
     cout << t->getElemento() << " ";
     inOrder(t->getRight());
 }
-
-Nodo *BST::find(Nodo *t, int x) {
+template<class T>
+Nodo<T> *BST<T>::find(Nodo<T> *t, T *valor) {
     if (t == nullptr)
         return nullptr;
-    else if (x < t->getElemento())
-        return find(t->getLeft(), x);
-    else if (x > t->getElemento())
-        return find(t->getRight(), x);
+    else if (valor < t->getElemento())
+        return find(t->getLeft(), valor);
+    else if (valor > t->getElemento())
+        return find(t->getRight(), valor);
 }
-
-void BST::insert(int x) {
-    root = insert(x, root);
+template<class T>
+void BST<T>::insert(T *valor) {
+    root = insert(valor, root);
 }
-
-void BST::remove(int x) {
-    root = remove(x, root);
+template<class T>
+void BST<T>::remove(T *valor) {
+    root = remove(valor, root);
 }
-
-void BST::display() {
+template<class T>
+void BST<T>::display() {
     inOrder(root);
     cout << endl;
 }
-
-void BST::search(int x) {
-    root = find(root, x);
+template<class T>
+void BST<T>::search(T *valor) {
+    root = find(root, valor);
 }

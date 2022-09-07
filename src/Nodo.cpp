@@ -4,41 +4,50 @@
 
 #include "Nodo.h"
 
-Nodo::Nodo(int elemento, Nodo *parent, Nodo *left, Nodo *right) : elemento(elemento), parent(parent), left(left),
-                                                                  right(right) {}
+template<class T>
+Nodo<T>::Nodo(T *dato, Nodo *parent, Nodo *left, Nodo *right):dato(dato), parent(parent), left(left), right(right) {}
 
-Nodo::~Nodo() {
+template<class T>
+Nodo<T>::~Nodo() {
 
 }
 
-int Nodo::getElemento() const {
-    return elemento;
+template<class T>
+T *Nodo<T>::getDato() const {
+    return dato;
 }
 
-void Nodo::setElemento(int elemento) {
-    Nodo::elemento = elemento;
+template<class T>
+void Nodo<T>::setDato(T *dato) {
+    Nodo::dato = dato;
 }
 
-Nodo *Nodo::getParent() const {
+template<class T>
+Nodo *Nodo<T>::getParent() const {
     return parent;
 }
 
-void Nodo::setParent(Nodo *parent) {
+template<class T>
+void Nodo<T>::setParent(Nodo *parent) {
     Nodo::parent = parent;
 }
 
-Nodo *Nodo::getLeft() const {
+template<class T>
+Nodo *Nodo<T>::getLeft() const {
     return left;
 }
 
-void Nodo::setLeft(Nodo *left) {
+template<class T>
+void Nodo<T>::setLeft(Nodo *left) {
     Nodo::left = left;
 }
 
-Nodo *Nodo::getRight() const {
+template<class T>
+Nodo *Nodo<T>::getRight() const {
     return right;
 }
 
-void Nodo::setRight(Nodo *right) {
+template<class T>
+void Nodo<T>::setRight(Nodo *right) {
     Nodo::right = right;
 }
