@@ -48,3 +48,10 @@ int main() {
     }
     return 0;
 }
+/*
+ *
+ * Menu<float> *m = new Menu<float>;
+ * m->menuPrincipal();
+ * delete m;
+ * return 0;
+ */
