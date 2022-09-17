@@ -6,11 +6,11 @@
 #define PROYECTODATOS_FILEMANAGER_H
 #include<fstream>
 #include<iostream>
-//#include ClienteManager
+#include "ClienteManager.h";
 class FileManager {
-    //static void saveClientes(ClienteManager &listaClientes, const string &fileName);
-    // static ostream &writeClientes(ostream &out, const ClienteManager &ruta);
-    //static ClienteManager loadClientes(const string &filename);
+    static void saveClientes(ClienteManager& listaCliente, const string& fileName);
+    static ostream& writeClientes(ostream& out, const ClienteManager& cliente);
+    static ClienteManager loadClientes(const string& filename);
 };
 
 

@@ -25,11 +25,11 @@ Nodo<T> *BST<T>::makeEmpty(Nodo<T> *t) {//duda en Nodo<T> *BST<T>
 template<class T>
 Nodo<T> *BST<T>::insert(T *valor, Nodo<T> *t) {
     if (t == nullptr) {
-        t = new Nodo<T>(valor);  //duda con parentesis no se si lleva *
-    } else if (valor < t->getElemento())
-        t->setLeft(insert(valor, t->getLeft()));
-    else if (valor < t->getElemento())
-        t->setRight(insert(valor, t->getRight()));
+        t = new Nodo<T>(*valor);  //duda con parentesis no se si lleva *
+    } else if (*valor < t->getElemento())
+        t->setLeft(insert(*valor, t->getLeft()));
+    else if (*valor < t->getElemento())
+        t->setRight(insert(*valor, t->getRight()));
     return t;
 }
 template<class T>

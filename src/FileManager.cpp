@@ -3,68 +3,63 @@
 //
 
 #include "FileManager.h"
-/*
- void FileManager::saveClientes(ClienteManager &listaClientes, const string &fileName) {
+ void FileManager::saveClientes(ClienteManager &listaVehiculo, const string &fileName) {
     ofstream myFile(fileName);
-    writeClientes(myFile, listaClientes);
+    writeClientes(myFile, listaVehiculo);
     myFile.close();
 }
+ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente) {
 
- ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente) {
-    char delimitador = ';';
-    for (auto &i: cliente.getClienteList()) {
-        out << i->getNombre() << delimitador;
-        out << i->getCedula() << delimitador;
-        out << i->getCorreoElec() << delimitador;
-        out << i->getCodigoPais() << delimitador;
-        out << i->isOnline() << delimitador;
-        out << i->getPagoSuscrib() << delimitador;
+    char delimitador = ',';
+    for (auto &i : cliente.getClienteBst()) {
+        out << i.getId() << delimitador;
+        out << i.getNombre() << delimitador;
+        out << i.isIngresaNino() << delimitador;
+        out << i.isEmbarazada() << delimitador;
+        out << i.isAdultoMayor() << delimitador;
+        out << i.getCategoria << delimitador;
         out << endl;
     }
     return out;
 }
+ClienteManager FileManager::loadClientes(const std::string &filename) {
 
- ClienteManager FileManager::loadClientes(const string &filename) {
+    Cliente cliente;
     ClienteManager clienteManager;
-    Cliente *cliente = nullptr;
+    BST<Cliente> clienteBST;
+
+    string id;
     string nombre;
-    string cedula;
-    string correoElec;
-    string pais;
-    string online;
-    int bOnline;
-    string pago;
-    int pagoSuscrib;
-    char delimitador = ';';
-    int codigoPais;
+    string ingresaNino;
+    string embarazada;
+    string adultoMayor;
+    bool bIngresaNino; //20%
+    bool bEmbarazada; //25%
+    bool bAdultoMayor; //35%
+    string categoria;
+    int iCategoria;  //categoria 1 20%, 2 10%, 3 0%
 
-    ifstream in(filename, ios::in);
-    if (!in.is_open()) {
-        throw invalid_argument("Could not open file [" + filename + "]");
-    }
+    char delimitador = ',';
+    std::ifstream in(filename, std::ios::in | ios::binary);
 
-    while (in.good()) {
+    while(in.good()) {
+        getline(in, id, delimitador);
         getline(in, nombre, delimitador);
-        getline(in, cedula, delimitador);
-        getline(in, correoElec, delimitador);
-        getline(in, pais, delimitador);
-        getline(in, online, delimitador);
-        getline(in, pago, '\n');
-        if (!nombre.empty()) {
-            cliente = new Cliente();
-            cliente->setNombre(nombre);
-            cliente->setCedula(cedula);
-            cliente->setCorreoElec(correoElec);
-            codigoPais = stoi(pais);
-            cliente->setCodigoPais(codigoPais);
-            bOnline = stoi(online);
-            cliente->setOnline(bOnline);
-            pagoSuscrib = stoi(pago);
-            cliente->setPagoSuscrib(pagoSuscrib);
+        getline(in, ingresaNino, delimitador);
+        getline(in, embarazada, delimitador);
+        getline(in, adultoMayor, delimitador);
+        getline(in, categoria, '\n');
+
+        if(!id.empty()){
+            bIngresaNino = stoi(ingresaNino);
+            bEmbarazada = stoi(embarazada);
+            bAdultoMayor = stoi(adultoMayor);
+            iCategoria = stoi(categoria);
+            cliente.setId(id);
+            cliente.setNombre(nombre);
+            cliente.setCategoria(iCategoria);
+            clienteManager.insert(cliente);
         }
-        clienteManager.ingresarCliente(cliente);
     }
     return clienteManager;
 }
-
- */

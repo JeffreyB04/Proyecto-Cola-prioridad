@@ -14,7 +14,7 @@ private:
     Nodo<T>* insert(T *valor, Nodo<T>* t);
     Nodo<T>* findMin(Nodo<T>* t);
     Nodo<T>* findMax(Nodo<T>* t);
-    Nodo<T>* remove(T *valor, Nodo<T>* t); //en (T )
+    Nodo<T>* remove(T *valor, Nodo<T>* t);
     void inOrder(Nodo<T>* t);
     Nodo<T>* find(Nodo<T>* t,T *valor);
 
@@ -22,7 +22,7 @@ public:
     BST();
     virtual ~BST();
     void insert(T *valor);
-    void remove(T *valor); //tenia (int x)
+    void remove(T *valor);
     void display();
     void search(T *valor);
 };
