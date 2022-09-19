@@ -21,7 +21,7 @@ private:
 public:
     BST();
     virtual ~BST();
-    void insert(T *valor);
+    void insertV(T *valor);
     void remove(T *valor);
     void display();
     void search(T *valor);

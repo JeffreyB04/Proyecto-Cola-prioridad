@@ -17,7 +17,7 @@ public:
     const BST<Cliente> &getClienteBst() const;
     void setClienteBst(const BST<Cliente> &clienteBst);
 
-    void ingresarCliente(Cliente& cliente);
+    void ingresarCliente(Cliente * cliente);
     void mostrarClientes();
 };
 

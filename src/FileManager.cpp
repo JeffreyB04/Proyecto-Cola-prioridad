@@ -3,6 +3,7 @@
 //
 
 #include "FileManager.h"
+
  void FileManager::saveClientes(ClienteManager &listaVehiculo, const string &fileName) {
     ofstream myFile(fileName);
     writeClientes(myFile, listaVehiculo);
@@ -11,7 +12,11 @@
 ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente) {
 
     char delimitador = ',';
-    for (auto &i : cliente.getClienteBst()) {
+    //for (auto &i : cliente.getClienteBst()) {
+        ClienteManager clienteManager;
+        BST<Cliente> clienteBST;
+        clienteManager.getClienteBst();
+        clienteBST.search(cliente);
         out << i.getId() << delimitador;
         out << i.getNombre() << delimitador;
         out << i.isIngresaNino() << delimitador;
@@ -19,12 +24,13 @@ ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente)
         out << i.isAdultoMayor() << delimitador;
         out << i.getCategoria << delimitador;
         out << endl;
-    }
+   // }
     return out;
 }
 ClienteManager FileManager::loadClientes(const std::string &filename) {
 
-    Cliente cliente;
+ //   Cliente cliente;
+    Cliente *cliente;
     ClienteManager clienteManager;
     BST<Cliente> clienteBST;
 
@@ -55,10 +61,10 @@ ClienteManager FileManager::loadClientes(const std::string &filename) {
             bEmbarazada = stoi(embarazada);
             bAdultoMayor = stoi(adultoMayor);
             iCategoria = stoi(categoria);
-            cliente.setId(id);
-            cliente.setNombre(nombre);
-            cliente.setCategoria(iCategoria);
-            clienteManager.insert(cliente);
+            cliente->setId(id);
+            cliente->setNombre(nombre);
+            cliente->setCategoria(iCategoria);
+            clienteManager.ingresarCliente(cliente);
         }
     }
     return clienteManager;

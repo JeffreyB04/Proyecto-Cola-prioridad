@@ -19,9 +19,8 @@ void ClienteManager::setClienteBst(const BST<Cliente> &clienteBst) {
     clienteBST = clienteBst;
 }
 
-void ClienteManager::ingresarCliente(Cliente &cliente) {
-    clienteBST.insert(cliente);
-
+void ClienteManager::ingresarCliente(Cliente *cliente) {
+    clienteBST.insertV(cliente);
 }
 
 void ClienteManager::mostrarClientes() {

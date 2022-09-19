@@ -24,13 +24,13 @@ Nodo<T> *BST<T>::makeEmpty(Nodo<T> *t) {//duda en Nodo<T> *BST<T>
 }
 template<class T>
 Nodo<T> *BST<T>::insert(T *valor, Nodo<T> *t) {
-    if (t == nullptr) {
-        t = new Nodo<T>(*valor);  //duda con parentesis no se si lleva *
-    } else if (*valor < t->getElemento())
-        t->setLeft(insert(*valor, t->getLeft()));
-    else if (*valor < t->getElemento())
-        t->setRight(insert(*valor, t->getRight()));
-    return t;
+    if (*t == nullptr) {
+        *t = new Nodo<T>(*valor);
+    } else if (*valor < *t->getDato())
+        *t->setLeft(insert(*valor, *t->getLeft()));
+    else if (*valor < *t->getDato())
+        *t->setRight(insert(*valor, *t->getRight()));
+    return *t;
 }
 template<class T>
 Nodo<T> *BST<T>::findMin(Nodo<T> *t) {
@@ -55,14 +55,14 @@ Nodo<T> *BST<T>::remove(T *valor, Nodo<T> *t) {
     Nodo<T> *temp;
     if (t == nullptr) {
         return nullptr;
-    } else if (valor < t->getElemento()) {
+    } else if (valor < t->getDato()) {
         t->setLeft(remove(valor, t->getLeft()));
-    } else if (valor > t->getElemento()) {
+    } else if (valor > t->getDato()) {
         t->setRight(remove(valor, t->getRight()));
     } else if (t->getLeft() && t->getRight()) {
         temp = findMin(t->getRight());
-        t->setElemento(temp->getElemento());
-        t->setRight(remove(t->getElemento(), t->getRight()));
+        t->setElemento(temp->getDato());
+        t->setRight(remove(t->getDato(), t->getRight()));
     } else {
         temp = t;
         if (t->getLeft() == nullptr)
@@ -78,20 +78,20 @@ void BST<T>::inOrder(Nodo<T> *t) {
     if (t == nullptr)
         return;
     inOrder(t->getLeft());
-    cout << t->getElemento() << " ";
+    cout << t->getDato() << " ";
     inOrder(t->getRight());
 }
 template<class T>
 Nodo<T> *BST<T>::find(Nodo<T> *t, T *valor) {
     if (t == nullptr)
         return nullptr;
-    else if (valor < t->getElemento())
-        return find(t->getLeft(), valor);
-    else if (valor > t->getElemento())
-        return find(t->getRight(), valor);
+    else if (*valor < t->getDato())
+        return find(*t->getLeft(), *valor);
+    else if (*valor > t->getDato())
+        return find(*t->getRight(), *valor);
 }
 template<class T>
-void BST<T>::insert(T *valor) {
+void BST<T>::insertV(T *valor) {
     root = insert(valor, root);
 }
 template<class T>
@@ -105,5 +105,5 @@ void BST<T>::display() {
 }
 template<class T>
 void BST<T>::search(T *valor) {
-    root = find(root, valor);
+    root = find(root, *valor);
 }
