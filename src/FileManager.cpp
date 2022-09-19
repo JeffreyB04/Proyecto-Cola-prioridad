@@ -4,25 +4,31 @@
 
 #include "FileManager.h"
 
- void FileManager::saveClientes(ClienteManager &listaVehiculo, const string &fileName) {
+ void FileManager::saveClientes(ClienteManager &listaCliente, const string &fileName) {
     ofstream myFile(fileName);
-    writeClientes(myFile, listaVehiculo);
+    writeClientes(myFile, listaCliente);
     myFile.close();
 }
 ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente) {
 
     char delimitador = ',';
     //for (auto &i : cliente.getClienteBst()) {
+        Cliente *clienteptr;
         ClienteManager clienteManager;
-        BST<Cliente> clienteBST;
-        clienteManager.getClienteBst();
-        clienteBST.search(cliente);
-        out << i.getId() << delimitador;
-        out << i.getNombre() << delimitador;
-        out << i.isIngresaNino() << delimitador;
-        out << i.isEmbarazada() << delimitador;
-        out << i.isAdultoMayor() << delimitador;
-        out << i.getCategoria << delimitador;
+        clienteManager.buscarCliente(clienteptr);
+        out << clienteptr->getId() << delimitador;
+        out << clienteptr->getNombre() << delimitador;
+        out << clienteptr->isIngresaNino() << delimitador;
+        out << clienteptr->isEmbarazada() << delimitador;
+        out << clienteptr->isAdultoMayor() << delimitador;
+        out << clienteptr->getCategoria() << delimitador;
+
+        //out << i.getId() << delimitador;
+        //out << i.getNombre() << delimitador;
+        //out << i.isIngresaNino() << delimitador;
+        //out << i.isEmbarazada() << delimitador;
+        //out << i.isAdultoMayor() << delimitador;
+        //out << i.getCategoria << delimitador;
         out << endl;
    // }
     return out;

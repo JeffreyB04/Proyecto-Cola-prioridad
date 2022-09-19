@@ -18,6 +18,7 @@ public:
     void setClienteBst(const BST<Cliente> &clienteBst);
 
     void ingresarCliente(Cliente * cliente);
+    void buscarCliente(Cliente * cliente);
     void mostrarClientes();
 };
 

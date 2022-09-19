@@ -214,7 +214,6 @@ void VectorDinamico<T>::ordenar() {
     std::sort(vec, vec + taml);
 }
 
-};
 
 
 #endif //PROYECTODATOS_VECTORDINAMICO_H

@@ -26,3 +26,7 @@ void ClienteManager::ingresarCliente(Cliente *cliente) {
 void ClienteManager::mostrarClientes() {
     clienteBST.display();
 }
+
+void ClienteManager::buscarCliente(Cliente *cliente) {
+    clienteBST.search(cliente);
+}
