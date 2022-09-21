@@ -45,9 +45,9 @@ ClienteManager FileManager::loadClientes(const std::string &filename) {
     string ingresaNino;
     string embarazada;
     string adultoMayor;
-    bool bIngresaNino; //20%
-    bool bEmbarazada; //25%
-    bool bAdultoMayor; //35%
+    int bIngresaNino; //20%
+    int bEmbarazada; //25%
+    int bAdultoMayor; //35%
     string categoria;
     int iCategoria;  //categoria 1 20%, 2 10%, 3 0%
 
@@ -63,9 +63,9 @@ ClienteManager FileManager::loadClientes(const std::string &filename) {
         getline(in, categoria, '\n');
 
         if(!id.empty()){
-            bIngresaNino = stoi(ingresaNino);
-            bEmbarazada = stoi(embarazada);
-            bAdultoMayor = stoi(adultoMayor);
+            cliente->setIngresaNino(bIngresaNino);
+            cliente->setEmbarazada(bEmbarazada);
+            cliente->setAdultoMayor(bAdultoMayor);
             iCategoria = stoi(categoria);
             cliente->setId(id);
             cliente->setNombre(nombre);
