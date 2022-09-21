@@ -23,7 +23,7 @@ void Nodo<T>::setDato(T *dato) {
 }
 
 template<class T>
-Nodo *Nodo<T>::getParent() const {
+Nodo<T> *Nodo<T>::getParent() const {
     return parent;
 }
 
@@ -33,7 +33,7 @@ void Nodo<T>::setParent(Nodo *parent) {
 }
 
 template<class T>
-Nodo *Nodo<T>::getLeft() const {
+Nodo<T> *Nodo<T>::getLeft() const {
     return left;
 }
 
@@ -43,7 +43,7 @@ void Nodo<T>::setLeft(Nodo *left) {
 }
 
 template<class T>
-Nodo *Nodo<T>::getRight() const {
+Nodo<T> *Nodo<T>::getRight() const {
     return right;
 }
 

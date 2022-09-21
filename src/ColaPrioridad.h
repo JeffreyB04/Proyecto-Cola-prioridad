@@ -27,7 +27,6 @@ public:
 	bool insertar(T*&);
 	T* peek();
 	T* remove();
-	//void mostrar();
 
 };
 

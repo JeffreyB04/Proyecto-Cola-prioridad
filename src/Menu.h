@@ -5,12 +5,19 @@
 #ifndef PROYECTODATOS_MENU_H
 #define PROYECTODATOS_MENU_H
 #include<iostream>
+#include "ColaPrioridad.h"
+#include "BST.cpp"
+#include "FileManager.h"
+#include "ClienteManager.h"
+#include "Lista.h"
 
 using namespace std;
 template <class T>
 class Menu {
 private:
     //aca en el video hay una lista
+    ColaPrioridad<T>* miCola;
+
 public:
     Menu();
     void menuPrincipal();
@@ -86,30 +93,33 @@ opcion0();
 }
     template<class T>
     void Menu<T>::opcion1(){
-        //desarrollar
+        cout<< "Opcion 1: Encolar todos los clientes"<<endl;//desarrollar
+        ColaPrioridad<Cliente>* colita = new ColaPrioridad<Cliente>();
+
+
     }
         template<class T>
     void Menu<T>::opcion2(){
-        //desarrollar
+            cout<< "2. Encolar un cliente "<<endl; //desarrollar
     }
         template<class T>
     void Menu<T>::opcion3(){
-        //desarrollar
+            cout<< "3. Atender los siguientes 5 clientes "<<endl; //desarrollar
     }
 
         template<class T>
     void Menu<T>::opcion4(){
-        //desarrollar
+            cout<< "4. Mostrar el siguiente cliente a ser atendido"<<endl; //desarrollar
     }
 
         template<class T>
     void Menu<T>::opcion5(){
-        //desarrollar
+            cout<< "5. Simulacion de atencion de clientes"<<endl;//desarrollar
     }
 
         template<class T>
     void Menu<T>::opcion6(){
-        //desarrollar
+            cout<< "6. Agregar cliente nuevo "<<endl;//desarrollar
     }
 
 

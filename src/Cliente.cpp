@@ -63,15 +63,21 @@ void Cliente::setCategoria(int categoria) {
 }
 
 ostream &operator<<(ostream &os, const Cliente &cliente) {
-    os << "id: " << cliente.id << " nombre: " << cliente.nombre << " ingresaNino: " << cliente.ingresaNino
-       << " embarazada: ";
+    os << "id: " << cliente.id << " nombre: " << cliente.nombre << " embarazada: ";
     if (cliente.embarazada)
-        os << "Si";
+        os << "Yes";
     else
         os << "No";
+
+    os << " IngresaNino: ";
+    if (cliente.ingresaNino)
+        os << "Yes";
+    else
+        os << "No";
+
     os << " adultoMayor: ";
     if (cliente.adultoMayor)
-        os << "Si";
+        os << "Yes";
     else
         os << "No";
     os << " categoria: "

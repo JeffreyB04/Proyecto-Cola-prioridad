@@ -1,7 +1,9 @@
 #include <iostream>
+#include "Menu.h"
+
 using namespace std;
 int main() {
-    char opc = 's';
+  /*  char opc = 's';
     char continuar = 's';
     while(continuar != '0')
     {
@@ -46,8 +48,7 @@ int main() {
             }
         }
     }
-    return 0;
-}
+
 /*
  *
  * Menu<float> *m = new Menu<float>;
@@ -55,3 +56,37 @@ int main() {
  * delete m;
  * return 0;
  */
+
+
+    Cliente* per = new Cliente("David", "123", true,true,true,2);
+    cout << per->getNombre()<< endl;
+    cout << per->getCategoria() << endl;
+    cout<< per->isIngresaNino()<<endl;
+    cout<<per->isEmbarazada()<<endl;
+    cout<<per->isAdultoMayor()<<endl;
+    cout<<per->getId()<<endl;
+    ClienteManager clien;
+    clien.ingresarCliente(per);
+    ColaPrioridad<Cliente>* colita = new ColaPrioridad<Cliente>();
+    colita->insertar(per);
+
+
+
+    Cliente* per2 = new Cliente("Juan", "123", true,true,true,2);
+    cout << per2->getNombre()<< endl;
+    cout << per2->getCategoria() << endl;
+    cout<< per2->isIngresaNino()<<endl;
+    cout<<per2->isEmbarazada()<<endl;
+    cout<<per2->isAdultoMayor()<<endl;
+    cout<<per2->getId()<<endl;
+
+
+    clien.ingresarCliente(per2);
+    colita->insertar(per2);
+    cout << "-----------------------" << endl;
+
+
+
+
+    return 0;
+}
