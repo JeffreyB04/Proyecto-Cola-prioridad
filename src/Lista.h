@@ -1,24 +1,26 @@
-/*#pragma once
+#pragma once
+#include<iostream>
+using namespace std;
 template <class T>
-class Nodo {
+class NodoPrioridad {
 private:
-	Nodo<T>* anterior;
-	Nodo<T>* siguinte;
+	NodoPrioridad<T>* anterior;
+	NodoPrioridad<T>* siguinte;
 	T* objetoPtr;
 public:
-	Nodo(T*, Nodo<T>*,Nodo<T>*);
-	virtual ~Nodo();
+	NodoPrioridad(T*, NodoPrioridad<T>*,NodoPrioridad<T>*);
+	virtual ~NodoPrioridad();
 	T* getObjetoPtr();
-	Nodo<T>* getSiguiente();
-	Nodo<T>* getAnterior();
-	void setAnterior(Nodo<T>*);
+	NodoPrioridad<T>* getSiguiente();
+	NodoPrioridad<T>* getAnterior();
+	void setAnterior(NodoPrioridad<T>*);
 	void setObjetoPtr(T*);
-	void setSiguiente(Nodo<T>*);
+	void setSiguiente(NodoPrioridad<T>*);
 };
 
 
 template<class T>
- Nodo<T>::Nodo(T* v, Nodo<T>* n, Nodo<T>* p)
+ NodoPrioridad<T>::NodoPrioridad(T* v, NodoPrioridad<T>* n, NodoPrioridad<T>* p)
 {
 	 this->objetoPtr = v;
 	 this->anterior = p;
@@ -26,39 +28,39 @@ template<class T>
 }
 
 template<class T>
-Nodo<T>::~Nodo() {
+NodoPrioridad<T>::~NodoPrioridad() {
 	delete objetoPtr;
 }
 
 template<class T>
-T* Nodo<T>::getObjetoPtr() {
+T* NodoPrioridad<T>::getObjetoPtr() {
 	return objetoPtr;
 }
 
 template<class T>
-Nodo<T>* Nodo<T>::getSiguiente() {
+NodoPrioridad<T>* NodoPrioridad<T>::getSiguiente() {
 	return this->siguinte;
 }
 
 template<class T>
- Nodo<T>* Nodo<T>::getAnterior()
+ NodoPrioridad<T>* NodoPrioridad<T>::getAnterior()
 {
 	return anterior;
 }
 
 template<class T>
- void Nodo<T>::setAnterior(Nodo<T>* an)
+ void NodoPrioridad<T>::setAnterior(NodoPrioridad<T>* an)
 {
 	 anterior = an;
 }
 
 template<class T>
-void Nodo<T>::setObjetoPtr(T* ptr) {
+void NodoPrioridad<T>::setObjetoPtr(T* ptr) {
 	objetoPtr = ptr;
 }
 
 template<class T>
-void Nodo<T>::setSiguiente(Nodo<T>* nod) {
+void NodoPrioridad<T>::setSiguiente(NodoPrioridad<T>* nod) {
 	this->siguinte = nod;
 }
 
@@ -69,9 +71,9 @@ template <class T>
 class Lista {
 private:
 
-	Nodo<T>* primero;
-	Nodo<T>* actual;
-	Nodo<T>* ultimo;
+	NodoPrioridad<T>* primero;
+	NodoPrioridad<T>* actual;
+	NodoPrioridad<T>* ultimo;
 	int cantidad;
 	
 
@@ -81,8 +83,8 @@ public:
 	virtual ~Lista();
 	int getCantidad();
 	void limpiaHeap();
-	Nodo<T>* getFront();
-	Nodo<T>* getBack();
+	NodoPrioridad<T>* getFront();
+	NodoPrioridad<T>* getBack();
 	bool empty();
 	bool insertar(T*);
 	bool eliminar();
@@ -105,8 +107,8 @@ template<class T>
 Lista<T>::Lista(const Lista<T>& ls)
 {
 	int contador = 0;
-	T* dato = NULL;
-	Nodo<T>* aux= ls.primero;
+	T* dato = nullptr;
+	NodoPrioridad<T>* aux= ls.primero;
 	while (ls.cantidad>=contador)
 	{
 		dato = new T(*aux->getObjetoPtr());
@@ -132,8 +134,8 @@ int Lista<T>::getCantidad()
 
 template<class T>
 void Lista<T>::limpiaHeap() {
-	Nodo<T>* actuall = NULL;
-	while (primero != NULL)
+	NodoPrioridad<T>* actuall = nullptr;
+	while (primero != nullptr)
 	{
 		actuall = primero;
 		cantidad--;
@@ -142,36 +144,36 @@ void Lista<T>::limpiaHeap() {
 	}
 }
 template<class T>
-Nodo<T>* Lista<T>::getFront()
+NodoPrioridad<T>* Lista<T>::getFront()
 {
 	return primero;
 }
 template<class T>
- Nodo<T>* Lista<T>::getBack()
+ NodoPrioridad<T>* Lista<T>::getBack()
 {
 	return ultimo;
 }
 template<class T>
 bool Lista<T>::empty()
 {
-	return primero == NULL;
+	return primero == nullptr;
 }
 
 
 template<class T>
 bool Lista<T>::insertar(T* p)
 {
-	Nodo<T>* aux = nullptr;
+	NodoPrioridad<T>* aux = nullptr;
 	actual = primero;
 
 	if (primero == nullptr) {
-		this->primero = new Nodo<T>(p, nullptr, nullptr);
+		this->primero = new NodoPrioridad<T>(p, nullptr, nullptr);
 		return true;
 	}
 	while (actual->getSiguiente()) {
 		actual = actual->getSiguiente();
 	}
-	aux = new Nodo<T>(p, nullptr, actual);
+	aux = new NodoPrioridad<T>(p, nullptr, actual);
 	this->cantidad++;
 	actual->setSiguiente(aux);
 	ultimo = aux;
@@ -188,7 +190,7 @@ template<class T>
 			 this->primero = nullptr;
 			 return true;
 		 }
-		 Nodo<T>* aux = nullptr;
+		 NodoPrioridad<T>* aux = nullptr;
 		 actual = primero;
 		 aux = ultimo->getAnterior();
 		 aux->setSiguiente(nullptr);
@@ -216,7 +218,7 @@ void Lista<T>::mostrar()
 {
 	actual = primero;
 	while (actual) {
-		std::cout << *actual->getObjetoPtr() << std::endl;
+		cout << *actual->getObjetoPtr() << endl;
 		actual = actual->getSiguiente();
 	}
 }
@@ -244,5 +246,4 @@ template<class T>
 	 return nullptr;
  }
 
-*/
 

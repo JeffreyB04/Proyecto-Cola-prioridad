@@ -35,4 +35,5 @@ public:
 
     void setRight(Nodo *right);
 };
+
 #endif //ARBOLBINARIOVINCULADO_NODO_H

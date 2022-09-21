@@ -5,7 +5,7 @@
 #ifndef PROYECTODATOS_MENU_H
 #define PROYECTODATOS_MENU_H
 #include<iostream>
-//#include "ColaPrioridad.h"
+#include "ColaPrioridad.h"
 #include "FileManager.h"
 #include "ClienteManager.h"
 //#include "Lista.h"
@@ -29,6 +29,15 @@ public:
     void opcion0();
     virtual ~Menu();
 };
+/*
+ string CLIENTECSV = R"(..\..\files\Datos-Banco-uno.csv )"
+ ClienteManager clienteManager;
+FileManager::saveClientes(clienteManager, CLIENTECSV); va despues de agregar clientes
+ ClienteManager clienteManager = FileManager::loadClientes(CLIENTECSV); solo los carga
+
+
+
+ */
 /*template<class T>
 Menu<T>::~Menu<T>(){}
 

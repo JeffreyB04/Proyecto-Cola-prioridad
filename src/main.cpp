@@ -56,7 +56,8 @@ int main() {
  * delete m;
  * return 0;
  */
-
+    string CLIENTECSV = R"(..\..\files\Datos-Banco-uno.csv )";
+    ClienteManager clienteManager = FileManager::loadClientes(CLIENTECSV);
 
   Cliente* per = new Cliente("1234", "David", true,true,true,2);
     cout << per->getNombre()<< endl;

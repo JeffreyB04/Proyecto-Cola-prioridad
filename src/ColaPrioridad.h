@@ -209,7 +209,7 @@ template<class T>
 int ColaPrioridad<T>::getHijoIz(int i)
 {
 
-	Nodo<T>* actual;
+	NodoPrioridad<T>* actual;
 	actual = contenedor->getFront();
 	int contador = 0;
 	int ayudante = ((i * 2) + 1);
@@ -241,7 +241,7 @@ void ColaPrioridad<T>::CrearHeap(Lista<T>* ls)
 template<class T>
 int ColaPrioridad<T>::getPadre(int i)
 {
-	Nodo<T>* actual;
+	NodoPrioridad<T>* actual;
 	actual = contenedor->getFront();
 	int contador = 0;
 	int ayudante = ((i - 1) / 2);
@@ -262,7 +262,7 @@ template<class T>
 int ColaPrioridad<T>::getHijoDer(int i)
 {
 
-	Nodo<T>* actual;
+	NodoPrioridad<T>* actual;
 	actual = contenedor->getFront();
 	int contador = 0;
 	int ayudante = ((i * 2) + 2);
@@ -280,7 +280,7 @@ int ColaPrioridad<T>::getHijoDer(int i)
 template<class T>
 void ColaPrioridad<T>::SiftUp()
 {
-	Nodo<T>* aux = contenedor->getBack();
+	NodoPrioridad<T>* aux = contenedor->getBack();
 	int contador = contenedor->getCantidad();
 	int contador2 = contador - 1;
 	while (aux && contador2>=0) {
@@ -299,7 +299,7 @@ void ColaPrioridad<T>::SiftUp()
 template<class T>
 void ColaPrioridad<T>::SiftUpMenor()
 {
-	Nodo<T>* aux = contenedor->getBack();
+	NodoPrioridad<T>* aux = contenedor->getBack();
 	int contador = contenedor->getCantidad();
 	int contador2 = contador - 1;
 	while (aux && contador2 >= 0) {
@@ -327,8 +327,8 @@ void ColaPrioridad<T>::Intercambio(int mayor, int i)
 	T* aux = nullptr;
 	T* aux2 = nullptr;
 	T* temporal = nullptr;
-	Nodo<T>* ayudante = nullptr;
-	Nodo<T>* actual;
+	NodoPrioridad<T>* ayudante = nullptr;
+	NodoPrioridad<T>* actual;
 	actual = contenedor->getFront();
 	int contador = 0;
 	int contador2 = 0;
