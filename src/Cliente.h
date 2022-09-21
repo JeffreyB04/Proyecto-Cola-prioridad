@@ -50,6 +50,7 @@ public:
     friend ostream &operator<<(ostream &os, const Cliente &cliente);
 
     virtual string toString();
+    operator int const();
 };
 
 

@@ -90,3 +90,23 @@ string Cliente::toString() {
     ss << (*this);
     return ss.str();
 }
+
+Cliente::operator int const() {
+
+    int total=0;
+    if(ingresaNino)
+        total=total+20;
+    if(embarazada)
+        total=total+25;
+    if(adultoMayor)
+        total=total+35;
+    switch(categoria){
+        case 1: total=total+20;
+            break;
+        case 2: total=total+10;
+            break;
+        case 3: total;
+            break;
+    }
+    return total;
+}
