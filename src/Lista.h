@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 template <class T>
 class Nodo {
 private:
@@ -244,5 +244,5 @@ template<class T>
 	 return nullptr;
  }
 
-
+*/
 

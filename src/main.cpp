@@ -58,7 +58,7 @@ int main() {
  */
 
 
-    Cliente* per = new Cliente("David", "123", true,true,true,2);
+  Cliente* per = new Cliente("1234", "David", true,true,true,2);
     cout << per->getNombre()<< endl;
     cout << per->getCategoria() << endl;
     cout<< per->isIngresaNino()<<endl;
@@ -67,8 +67,8 @@ int main() {
     cout<<per->getId()<<endl;
     ClienteManager clien;
     clien.ingresarCliente(per);
-    ColaPrioridad<Cliente>* colita = new ColaPrioridad<Cliente>();
-    colita->insertar(per);
+
+
 
 
 
@@ -82,7 +82,7 @@ int main() {
 
 
     clien.ingresarCliente(per2);
-    colita->insertar(per2);
+
     cout << "-----------------------" << endl;
 
 

@@ -3,6 +3,7 @@
 //
 
 #include "BST.h"
+
 template<class T>
 BST<T>::BST() {
     root = nullptr;
@@ -24,13 +25,13 @@ Nodo<T> *BST<T>::makeEmpty(Nodo<T> *t) {//duda en Nodo<T> *BST<T>
 }
 template<class T>
 Nodo<T> *BST<T>::insert(T *valor, Nodo<T> *t) {
-    if (*t == nullptr) {
-        *t = new Nodo<T>(*valor);
-    } else if (*valor < *t->getDato())
-        *t->setLeft(insert(*valor, *t->getLeft()));
-    else if (*valor < *t->getDato())
-        *t->setRight(insert(*valor, *t->getRight()));
-    return *t;
+    if (t == nullptr) {
+        t = new Nodo<T>(valor);
+    } else if (valor < t->getDato())
+        t->setLeft(insert(valor, t->getLeft()));
+    else if (valor < t->getDato())
+        t->setRight(insert(valor, t->getRight()));
+    return t;
 }
 template<class T>
 Nodo<T> *BST<T>::findMin(Nodo<T> *t) {
@@ -85,10 +86,10 @@ template<class T>
 Nodo<T> *BST<T>::find(Nodo<T> *t, T *valor) {
     if (t == nullptr)
         return nullptr;
-    else if (*valor < t->getDato())
-        return find(*t->getLeft(), *valor);
-    else if (*valor > t->getDato())
-        return find(*t->getRight(), *valor);
+    else if (valor < t->getDato())
+        return find(t->getLeft(), valor);
+    else if (valor > t->getDato())
+        return find(t->getRight(), valor);
 }
 template<class T>
 void BST<T>::insertV(T *valor) {
@@ -105,5 +106,5 @@ void BST<T>::display() {
 }
 template<class T>
 void BST<T>::search(T *valor) {
-    root = find(root, *valor);
+    root = find(root, valor);
 }
