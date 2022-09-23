@@ -24,7 +24,6 @@ void Menu::menuPrincipal() {
 
         continuar=stoi(aux);
         switch(continuar){
-            //ingreso a inventario
             case 1:
                 encolaTodos();
 
@@ -42,7 +41,8 @@ void Menu::menuPrincipal() {
                 break;
 
             case 4:
-                atenderSig();
+                //atenderSig();
+                this->atenderSig<Cliente>();
 
                 break;
             case 5:
@@ -65,9 +65,6 @@ void Menu::encolaTodos() {
     queue=new ColaPrioridad<Cliente>();
     CLIENTECSV = R"(..\..\files\Datos-Banco-uno.csv )";
     clienteManager = FileManager::loadClientes(CLIENTECSV,*queue);
-
-
-
 }
 void Menu::agregarCliente() {
     string nombre,id,aux;
@@ -114,8 +111,17 @@ void Menu::simulacionCliente() {
 
 
 }
+template<class T>
 void Menu::atenderSig() {
+    int contador=1;
 
+    T* elemento = nullptr;
+    while (contador!=0) {
+        elemento = queue->remove();
+        cout << *elemento << endl;
+        delete elemento;
+        contador--;
+    }
 }
 template<class T>
 void Menu::atender5() {
@@ -131,7 +137,38 @@ int contador=5;
 
 }
 void Menu::encolaCliente() {
-
+    string nombre,id,aux;
+    bool IngrN,embar,adultM;
+    int catergoria;
+    cout<<"Digite el Nombre"<<endl;
+    cin>>nombre;
+    cout<<"Digite el Id"<<endl;
+    cin>>id;
+    cout<<"Ingresa con niño? Si o No"<<endl;
+    cin>>aux;
+    if(aux=="Si")
+        IngrN=true;
+    else
+        IngrN=false;
+    cout<<"Esta embarazada? Si o No" <<endl;
+    cin>>aux;
+    if(aux=="Si")
+        embar=true;
+    else
+        embar=false;
+    cout<<"Es Adulto Mayor? Si o No"<<endl;
+    cin>>aux;
+    if(aux=="Si")
+        adultM=true;
+    else
+        adultM=false;
+    cout<<"Digite Categoria: 1 - 2 - 3"<<endl;
+    cin>>aux;
+    catergoria=stoi(aux);
+    Cliente* per = new Cliente(id, nombre, IngrN,embar,adultM,catergoria);
+    this->clienteManager.ingresarCliente(per);
+    queue=new ColaPrioridad<Cliente>();
+    queue->insertar(per);
 }
 
 

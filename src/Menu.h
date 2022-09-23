@@ -26,6 +26,7 @@ public:
     void encolaCliente();
     template<class T>
     void atender5();
+    template<class T>
     void atenderSig();
     template<class T>
     void simulacionCliente();
