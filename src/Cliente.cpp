@@ -6,7 +6,7 @@
 
 Cliente::Cliente() {}
 
-Cliente::Cliente(const string &id, const string &nombre, bool ingresaNino, bool embarazada, bool adultoMayor,
+Cliente::Cliente( string id, string nombre, bool ingresaNino, bool embarazada, bool adultoMayor,
                  int categoria) : id(id), nombre(nombre), ingresaNino(ingresaNino), embarazada(embarazada),
                                   adultoMayor(adultoMayor), categoria(categoria) {}
 
@@ -18,16 +18,16 @@ const string &Cliente::getId() const {
     return id;
 }
 
-void Cliente::setId(const string &id) {
-    Cliente::id = id;
+void Cliente::setId(string id) {
+    this->id = id;
 }
 
 const string &Cliente::getNombre() const {
     return nombre;
 }
 
-void Cliente::setNombre(const string &nombre) {
-    Cliente::nombre = nombre;
+void Cliente::setNombre( string nombre) {
+    this->nombre = nombre;
 }
 
 bool Cliente::isIngresaNino() const {
@@ -35,7 +35,8 @@ bool Cliente::isIngresaNino() const {
 }
 
 void Cliente::setIngresaNino(bool ingresaNino) {
-    Cliente::ingresaNino = ingresaNino;
+
+    this->ingresaNino = ingresaNino;
 }
 
 bool Cliente::isEmbarazada() const {
@@ -43,7 +44,7 @@ bool Cliente::isEmbarazada() const {
 }
 
 void Cliente::setEmbarazada(bool embarazada) {
-    Cliente::embarazada = embarazada;
+   this->embarazada = embarazada;
 }
 
 bool Cliente::isAdultoMayor() const {
@@ -51,7 +52,7 @@ bool Cliente::isAdultoMayor() const {
 }
 
 void Cliente::setAdultoMayor(bool adultoMayor) {
-    Cliente::adultoMayor = adultoMayor;
+    this->adultoMayor = adultoMayor;
 }
 
 int Cliente::getCategoria() const {
@@ -59,7 +60,7 @@ int Cliente::getCategoria() const {
 }
 
 void Cliente::setCategoria(int categoria) {
-    Cliente::categoria = categoria;
+    this->categoria = categoria;
 }
 
 ostream &operator<<(ostream &os, const Cliente &cliente) {

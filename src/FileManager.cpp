@@ -33,7 +33,7 @@ ostream &FileManager::writeClientes(ostream &out, const ClienteManager &cliente)
    // }
     return out;
 }
-ClienteManager FileManager::loadClientes(const std::string &filename) {
+ClienteManager FileManager::loadClientes(const std::string &filename,ColaPrioridad<Cliente>& queue) {
 
  //   Cliente cliente;
     Cliente *cliente;
@@ -45,9 +45,9 @@ ClienteManager FileManager::loadClientes(const std::string &filename) {
     string ingresaNino;
     string embarazada;
     string adultoMayor;
-    int bIngresaNino; //20%
-    int bEmbarazada; //25%
-    int bAdultoMayor; //35%
+    string bIngresaNino; //20%
+    string bEmbarazada; //25%
+    string bAdultoMayor; //35%
     string categoria;
     int iCategoria;  //categoria 1 20%, 2 10%, 3 0%
 
@@ -63,14 +63,25 @@ ClienteManager FileManager::loadClientes(const std::string &filename) {
         getline(in, categoria, '\n');
 
         if(!id.empty()){
-            cliente->setIngresaNino(bIngresaNino);
-            cliente->setEmbarazada(bEmbarazada);
-            cliente->setAdultoMayor(bAdultoMayor);
+            cliente=new Cliente();
+            if(bIngresaNino=="Yes")
+            cliente->setIngresaNino(true);
+            else
+                cliente->setIngresaNino(false);
+            if(bEmbarazada=="Yes")
+                cliente->setEmbarazada(true);
+            else
+               cliente->setEmbarazada(false);
+            if(bAdultoMayor=="Yes")
+                cliente->setAdultoMayor(true);
+            else
+                cliente->setAdultoMayor(false);
             iCategoria = stoi(categoria);
             cliente->setId(id);
             cliente->setNombre(nombre);
             cliente->setCategoria(iCategoria);
             clienteManager.ingresarCliente(cliente);
+            queue.insertar(cliente);
         }
     }
     return clienteManager;

@@ -19,17 +19,17 @@ private:
 public:
     Cliente();
 
-    Cliente(const string &id, const string &nombre, bool ingresaNino, bool embarazada, bool adultoMayor, int categoria);
+    Cliente( string id, string nombre, bool ingresaNino, bool embarazada, bool adultoMayor, int categoria);
 
     virtual ~Cliente();
 
     const string &getId() const;
 
-    void setId(const string &id);
+    void setId( string id);
 
     const string &getNombre() const;
 
-    void setNombre(const string &nombre);
+    void setNombre( string nombre);
 
     bool isIngresaNino() const;
 

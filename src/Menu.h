@@ -11,24 +11,32 @@
 //#include "Lista.h"
 
 using namespace std;
-template <class T>
 class Menu {
 private:
 
-   // ColaPrioridad<T>* miCola;
+   ColaPrioridad<Cliente>* queue;
+    string CLIENTECSV;
+    ClienteManager clienteManager;
 
 public:
     Menu();
+
     void menuPrincipal();
-    void opcion1();
-    void opcion2();
-    void opcion3();
-    void opcion4();
-    void opcion5();
-    void opcion6();
-    void opcion0();
+    void encolaTodos();
+    void encolaCliente();
+    template<class T>
+    void atender5();
+    void atenderSig();
+    template<class T>
+    void simulacionCliente();
+    void agregarCliente();
+
     virtual ~Menu();
 };
+
+
+
+
 /*
  string CLIENTECSV = R"(..\..\files\Datos-Banco-uno.csv )"
  ClienteManager clienteManager;

@@ -7,12 +7,14 @@
 #include<fstream>
 #include<iostream>
 #include "ClienteManager.h"
+#include "ColaPrioridad.h"
 
 class FileManager {
 public:
     static void saveClientes(ClienteManager& listaCliente, const string& fileName);
     static ostream& writeClientes(ostream& out, const ClienteManager& cliente);
-    static ClienteManager loadClientes(const string& filename);
+    static ClienteManager loadClientes(const string& filename,ColaPrioridad<Cliente>& queue);
+
 };
 
 
